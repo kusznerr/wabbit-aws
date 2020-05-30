@@ -22,7 +22,7 @@ resource "aws_instance" "ec2_instance" {
   ami = "ami-01ed306a12b7d1c96"
   instance_type = "t2.micro"
   vpc_security_group_ids = ["${aws_security_group.examplesg.id}"]
-  key_name = "${aws_key_pair.example.id}"
+  //key_name = "${aws_key_pair.example.id}"
   tags = {
     Name = "my-first-ec2-instance"
   }
