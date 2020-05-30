@@ -3,10 +3,10 @@ output "ids" {
   value       = module.ec2.id
 }
 
-output "ids_t2" {
-  description = "List of IDs of t2-type instances"
-  value       = module.ec2_with_t2_unlimited.id
-}
+//output "ids_t2" {
+//  description = "List of IDs of t2-type instances"
+//  value       = module.ec2_with_t2_unlimited.id
+//}
 
 output "public_dns" {
   description = "List of public DNS names assigned to the instances"
