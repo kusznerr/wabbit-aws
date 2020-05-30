@@ -57,7 +57,7 @@ module "security_group" {
 
 resource "aws_eip" "this" {
   vpc      = true
-  instance = module.ec2_with_t2_unlimited.id[0]
+  instance = module.ec2.id[0]
 }
 
 resource "aws_placement_group" "web" {
@@ -74,14 +74,14 @@ resource "aws_network_interface" "this" {
   subnet_id = tolist(data.aws_subnet_ids.all.ids)[count.index]
 }
 
-/*module "ec2" {
+module "ec2" {
   source = "github.com/terraform-aws-modules/terraform-aws-ec2-instance"
 
-  instance_count = 0
+  instance_count = 1
 
   name          = "example-normal"
   ami           = data.aws_ami.amazon_linux.id
-  instance_type = "c5.large"
+  instance_type = "t2.micro"
   subnet_id     = tolist(data.aws_subnet_ids.all.ids)[0]
   //  private_ips                 = ["172.31.32.5", "172.31.46.20"]
   vpc_security_group_ids      = [module.security_group.this_security_group_id]
@@ -112,8 +112,8 @@ resource "aws_network_interface" "this" {
     "Location" = "Secret"
   }
 }
-*/
-module "ec2_with_t2_unlimited" {
+
+/*module "ec2" {
   source = "github.com/terraform-aws-modules/terraform-aws-ec2-instance"
 
   instance_count = 1
@@ -127,7 +127,7 @@ module "ec2_with_t2_unlimited" {
   vpc_security_group_ids      = [module.security_group.this_security_group_id]
   associate_public_ip_address = true
 }
-/*
+
 module "ec2_with_t3_unlimited" {
   source = "github.com/terraform-aws-modules/terraform-aws-ec2-instance"
 
