@@ -44,7 +44,7 @@ data "aws_ami" "amazon_linux" {
 
 module "security_group" {
   source  = "github.com/terraform-aws-modules/terraform-aws-security-group"
-  version = "~> 3.0"
+  //version = "~> 3.0"
 
   name        = "example"
   description = "Security group for example usage with EC2 instance"
