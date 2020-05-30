@@ -57,7 +57,7 @@ module "security_group" {
 
 resource "aws_eip" "this" {
   vpc      = true
-  instance = module.ec2.id[0]
+  instance = module.ec2_with_t2_unlimited.id[0]
 }
 
 resource "aws_placement_group" "web" {
