@@ -43,10 +43,10 @@ output "instance_id" {
   value       = module.ec2.id[0]
 }
 
-output "t2_instance_id" {
-  description = "EC2 instance ID"
-  value       = module.ec2_with_t2_unlimited.id[0]
-}
+//output "t2_instance_id" {
+//  description = "EC2 instance ID"
+//  value       = module.ec2_with_t2_unlimited.id[0]
+//}
 
 output "instance_public_dns" {
   description = "Public DNS name assigned to the EC2 instance"
@@ -58,7 +58,7 @@ output "credit_specification" {
   value       = module.ec2.credit_specification
 }
 
-output "credit_specification_t2_unlimited" {
-  description = "Credit specification of t2-type EC2 instance"
-  value       = module.ec2_with_t2_unlimited.credit_specification
-}
+//output "credit_specification_t2_unlimited" {
+//  description = "Credit specification of t2-type EC2 instance"
+//  value       = module.ec2_with_t2_unlimited.credit_specification
+//}
