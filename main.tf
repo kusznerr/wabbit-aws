@@ -74,7 +74,7 @@ resource "aws_network_interface" "this" {
   subnet_id = tolist(data.aws_subnet_ids.all.ids)[count.index]
 }
 
-module "ec2" {
+/*module "ec2" {
   source = "github.com/terraform-aws-modules/terraform-aws-ec2-instance"
 
   instance_count = 0
@@ -112,7 +112,7 @@ module "ec2" {
     "Location" = "Secret"
   }
 }
-
+*/
 module "ec2_with_t2_unlimited" {
   source = "github.com/terraform-aws-modules/terraform-aws-ec2-instance"
 
@@ -127,7 +127,7 @@ module "ec2_with_t2_unlimited" {
   vpc_security_group_ids      = [module.security_group.this_security_group_id]
   associate_public_ip_address = true
 }
-
+/*
 module "ec2_with_t3_unlimited" {
   source = "github.com/terraform-aws-modules/terraform-aws-ec2-instance"
 
@@ -172,3 +172,4 @@ module "ec2_zero" {
   subnet_id              = tolist(data.aws_subnet_ids.all.ids)[0]
   vpc_security_group_ids = [module.security_group.this_security_group_id]
 }
+*/
