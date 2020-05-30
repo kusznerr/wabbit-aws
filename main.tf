@@ -43,7 +43,7 @@ data "aws_ami" "amazon_linux" {
 }
 
 module "security_group" {
-  source  = "terraform-aws-modules/security-group/aws"
+  source  = "github.com/terraform-aws-modules/terraform-aws-security-group"
   version = "~> 3.0"
 
   name        = "example"
@@ -75,7 +75,7 @@ resource "aws_network_interface" "this" {
 }
 
 module "ec2" {
-  source = "terraform-aws-modules/terraform-aws-ec2-instance"
+  source = "github.com/terraform-aws-modules/terraform-aws-ec2-instance"
 
   instance_count = 0
 
@@ -114,7 +114,7 @@ module "ec2" {
 }
 
 module "ec2_with_t2_unlimited" {
-  source = "terraform-aws-modules/terraform-aws-ec2-instance"
+  source = "github.com/terraform-aws-modules/terraform-aws-ec2-instance"
 
   instance_count = 1
 
@@ -129,7 +129,7 @@ module "ec2_with_t2_unlimited" {
 }
 
 module "ec2_with_t3_unlimited" {
-  source = "terraform-aws-modules/terraform-aws-ec2-instance"
+  source = "github.com/terraform-aws-modules/terraform-aws-ec2-instance"
 
   instance_count = 0
 
@@ -143,7 +143,7 @@ module "ec2_with_t3_unlimited" {
 }
 
 module "ec2_with_network_interface" {
-  source = "terraform-aws-modules/terraform-aws-ec2-instance"
+  source = "github.com/terraform-aws-modules/terraform-aws-ec2-instance"
   instance_count = 0
 
   name            = "example-network"
@@ -162,7 +162,7 @@ module "ec2_with_network_interface" {
 
 # This instance won't be created
 module "ec2_zero" {
-  source = "terraform-aws-modules/terraform-aws-ec2-instance"
+  source = "github.com/terraform-aws-modules/terraform-aws-ec2-instance"
 
   instance_count = 0
 
