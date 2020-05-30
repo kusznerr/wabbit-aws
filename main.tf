@@ -60,10 +60,10 @@ resource "aws_eip" "this" {
   instance = module.ec2.id[0]
 }
 
-resource "aws_placement_group" "web" {
-  name     = "hunky-dory-pg"
-  strategy = "cluster"
-}
+//resource "aws_placement_group" "web" {
+//  name     = "hunky-dory-pg"
+//  strategy = "cluster"
+//}
 
 resource "aws_kms_key" "this" {
 }
@@ -86,7 +86,7 @@ module "ec2" {
   //  private_ips                 = ["172.31.32.5", "172.31.46.20"]
   vpc_security_group_ids      = [module.security_group.this_security_group_id]
   associate_public_ip_address = true
-  placement_group             = aws_placement_group.web.id
+  //placement_group             = aws_placement_group.web.id
 
   user_data_base64 = base64encode(local.user_data)
 
