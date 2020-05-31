@@ -20,26 +20,26 @@ data "aws_subnet_ids" "all" {
   vpc_id = data.aws_vpc.default.id
 }
 
-data "aws_ami" "amazon_linux" {
+data "aws_ami" "ubuntu_linux" {
   most_recent = true
 
-  owners = ["amazon"]
+  owners = ["099720109477"]
 
   filter {
     name = "name"
 
     values = [
-      "amzn-ami-hvm-*-x86_64-gp2",
+      "ubuntu*16.04*",
     ]
   }
 
-  filter {
-    name = "owner-alias"
-
-    values = [
-      "amazon",
-    ]
-  }
+  //filter {
+  //  name = "owner-alias"
+//
+ //   values = [
+  //    "amazon",
+   // ]
+  //}
 }
 
 module "security_group" {
