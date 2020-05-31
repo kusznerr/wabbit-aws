@@ -48,13 +48,36 @@ module "security_group" {
   source  = "github.com/terraform-aws-modules/terraform-aws-security-group"
   //version = "~> 3.0"
 
-  name        = "example"
+  name        = "BBB-rules"
   description = "Security group for example usage with EC2 instance"
   vpc_id      = data.aws_vpc.default.id
 
   ingress_cidr_blocks = ["0.0.0.0/0"]
-  ingress_rules       = ["http-80-tcp", "all-icmp" ,"ssh-tcp"]
+  ingress_rules       = ["http-80-tcp", "all-icmp" ,"ssh-tcp","https-443-tcp"]
   egress_rules        = ["all-all"]
+  ingress_with_cidr_blocks = [
+    {
+      from_port                = 7443
+      to_port                  = 7443
+      protocol                 = "tcp"
+      description              = "BBB-tcp-7443"
+      cidr_blocks = "0.0.0.0/0"
+    },
+    {
+      from_port                = 1935
+      to_port                  = 1935
+      protocol                 = "tcp"
+      description              = "BBB-tcp-1935"
+      cidr_blocks = "0.0.0.0/0"
+    },
+    {
+      from_port                = 16384
+      to_port                  = 32768
+      protocol                 = "udp"
+      description              = "BBB-udp_range"
+      cidr_blocks = "0.0.0.0/0"
+    }
+    ]
 }
 
 resource "aws_eip" "this" {
