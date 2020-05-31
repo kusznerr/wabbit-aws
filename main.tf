@@ -1,5 +1,5 @@
 provider "aws" {
-  region = "eu-west-1"
+  region = "us-east-1"
 }
 
 locals {
@@ -84,6 +84,7 @@ module "ec2" {
   name          = "example-normal"
   ami           = data.aws_ami.ubuntu_linux.id
   instance_type = "t2.micro"
+  //instance_type = "c5.2xlarge" 
   subnet_id     = tolist(data.aws_subnet_ids.all.ids)[0]
   key_name= "RK1"
   //  private_ips                 = ["172.31.32.5", "172.31.46.20"]
