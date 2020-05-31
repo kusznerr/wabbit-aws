@@ -33,13 +33,15 @@ data "aws_ami" "ubuntu_linux" {
     ]
   }
 
-  //filter {
-  //  name = "owner-alias"
-//
- //   values = [
-  //    "amazon",
-   // ]
-  //}
+  /*
+  filter {
+    name = "owner-alias"
+
+   values = [
+    "amazon",
+     ]
+  */
+  }
 }
 
 module "security_group" {
@@ -80,7 +82,7 @@ module "ec2" {
   instance_count = 1
 
   name          = "example-normal"
-  ami           = data.aws_ami.amazon_linux.id
+  ami           = data.aws_ami.ubuntu_linux.id
   instance_type = "t2.micro"
   subnet_id     = tolist(data.aws_subnet_ids.all.ids)[0]
   //  private_ips                 = ["172.31.32.5", "172.31.46.20"]
