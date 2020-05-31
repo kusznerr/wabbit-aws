@@ -106,10 +106,10 @@ module "ec2" {
 
   name          = "example-normal"
   ami           = data.aws_ami.ubuntu_linux.id
-  instance_type = "t2.micro"
-  //instance_type = "c5.2xlarge" 
+  //instance_type = "t2.micro"
+  instance_type = "c5.2xlarge" 
   subnet_id     = tolist(data.aws_subnet_ids.all.ids)[0]
-  key_name= "RK1"
+  key_name= "RK2"
   //  private_ips                 = ["172.31.32.5", "172.31.46.20"]
   vpc_security_group_ids      = [module.security_group.this_security_group_id]
   associate_public_ip_address = true
