@@ -40,8 +40,8 @@ data "aws_ami" "ubuntu_linux" {
    values = [
     "amazon",
      ]
-  */
   }
+  */
 }
 
 module "security_group" {
