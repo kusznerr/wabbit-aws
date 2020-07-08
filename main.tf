@@ -105,7 +105,8 @@ module "ec2" {
   instance_count = 2
 
   name          = "example-normal"
-  ami           = data.aws_ami.ubuntu_linux.id
+  //ami           = data.aws_ami.ubuntu_linux.id
+  ami="ami-0c133b42a7a9543e8"
   //instance_type = "t2.micro"
   instance_type = "c5.2xlarge" 
   subnet_id     = tolist(data.aws_subnet_ids.all.ids)[0]
