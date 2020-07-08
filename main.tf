@@ -102,7 +102,7 @@ resource "aws_network_interface" "this" {
 module "ec2" {
   source = "github.com/terraform-aws-modules/terraform-aws-ec2-instance"
 
-  instance_count = 1
+  instance_count = 2
 
   name          = "example-normal"
   ami           = data.aws_ami.ubuntu_linux.id
