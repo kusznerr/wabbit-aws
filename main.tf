@@ -81,7 +81,7 @@ module "security_group" {
 }
 
 resource "aws_eip" "this" {
-  count=2
+  count=var.aws_vm_count
   vpc      = true
   instance = module.ec2.id[count.index]
 }
@@ -103,7 +103,7 @@ resource "aws_network_interface" "this" {
 module "ec2" {
   source = "github.com/terraform-aws-modules/terraform-aws-ec2-instance"
 
-  instance_count = 2
+  instance_count = var.aws_vm_count
 
   name          = "example-normal"
   //ami           = data.aws_ami.ubuntu_linux.id
